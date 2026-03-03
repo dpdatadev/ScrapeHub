@@ -1,0 +1,12 @@
+<h1>Commands</h1>
+<h2>Previously run commands</h2>
+<div id="commands">
+  <% @commands.each do |command| %>
+    <div>
+      <a href="/commands/<%= command.id %>">
+        <%= command.name %>---<%= command.status %>
+      </a>
+    </div>
+  <% end %>
+</div>
+
