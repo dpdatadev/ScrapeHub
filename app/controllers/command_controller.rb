@@ -1,5 +1,5 @@
 class CommandController < ApplicationController
   def index
-    @commands = Command.all
+    @commands = Commands.all
   end
 end

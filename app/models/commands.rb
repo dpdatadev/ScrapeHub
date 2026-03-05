@@ -1,3 +1,3 @@
-class Command < ActiveRecord::Base
+class Commands < ActiveRecord::Base
   
 end
