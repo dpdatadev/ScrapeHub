@@ -1,0 +1,35 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Command configs" %>
+
+<h1 class="text-center">Configurations</h1>
+
+
+
+ <% @command_configs.each do |command_config| %>
+<table class="table text-center">
+  <thead class="text-center">
+    <tr class="text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Args</th>
+      <th scope="col">Priority</th>
+     
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    <tr>
+      <th scope="row" class="text-center"><a href="/command_configs/<%= command_config.id %>"><%= command_config.id %></th>
+     
+      <td scope="row" class="text-center"> <%= command_config.name %></td>
+      <td scope="row" class="text-center"><%= command_config.args %></td>
+      <td scope="row" class="text-center"><%= command_config.priority %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="text-center">
+<%= link_to "Create New Command", new_command_config_path %>
+</div>
+<% end %>

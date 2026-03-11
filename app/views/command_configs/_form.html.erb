@@ -1,0 +1,39 @@
+<%= form_with(model: command_config) do |form| %>
+  <% if command_config.errors.any? %>
+    <div style="color: red" class="text-center">
+      <h2><%= pluralize(command_config.errors.count, "error") %> prohibited this command_config from being saved:</h2>
+
+      <ul>
+        <% command_config.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="text-center">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+    <div class="text-center">
+
+    <%= form.label :args, style: "display: block" %>
+    <%= form.text_field :args %>
+  </div>
+
+    <div class="text-center">
+
+    <%= form.label :notes, style: "display: block" %>
+    <%= form.textarea :notes %>
+  </div>
+
+  <div class="text-center">
+    <%= form.label :priority, style: "display: block" %>
+    <%= form.number_field :priority %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit %>
+  </div>
+<% end %>

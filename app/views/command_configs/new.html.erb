@@ -1,0 +1,13 @@
+<% content_for :title, "New command config" %>
+
+<div class="text-center">
+<h1>Register New Command</h1>
+<small><em><strong>CMDHUB WebUI</strong> - authenticated users may add commands to the registry.</em></small>
+</div>
+<%= render "form", command_config: @command_config %>
+
+<br>
+
+<div class="text-center">
+  <%= link_to "Back to command configs", command_configs_path %>
+</div>

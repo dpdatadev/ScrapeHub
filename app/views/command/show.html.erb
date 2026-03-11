@@ -1,14 +1,12 @@
-<h1>Commands</h1>
-<h2>Previously run commands</h2>
+<h2 class="text-center"><small>Previously run commands</small></h2>
 <hr />
-<div id="commands">
+<div id="commands" class="text-center">
     <div>
         <%= @command.uuid %><br />
         <%= @command.name %>---<%= @command.status %>
         <hr />
         <%= @command.stdout %>
-        <hr />
-        <%= @command.exit_code %>   
+
       </a>
     </div>
 </div>

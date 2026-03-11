@@ -1,12 +1,29 @@
-<h1>Commands</h1>
-<h2>Previously run commands</h2>
-<div id="commands">
-  <% @commands.each do |command| %>
-    <div>
-            <a href="/commands/<%= command.id %>">
-              <%= command.name %>---<%= command.status %>
-      </a>
-    </div>
-  <% end %>
+<div class="text-center">
+<h2>Commands Ran</h2>
+<h4><i>Last Run: <strong style="color:green;"><%= @lastrun.created_at.strftime("%F") %></strong></i></h4>
 </div>
+
+<div id="commands" class="text-center">
+  <% @commands.each do |command| %>
+
+<table class="table">
+  <thead class="text-center">
+    <tr class="text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+     
+    </tr>
+  </thead>
+  <tbody class="text-center">
+    <tr>
+      <th scope="row" class="text-center"><a href="/commands/<%= command.id %>"><%= command.id %></th>
+     
+      <td scope="row" class="text-center"> <%= command.name %></td>
+      <td scope="row" class="text-center"><%= command.status %></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<% end %>
 
