@@ -26,6 +26,7 @@
   <body>
      <nav>
       <%= link_to "Home", root_path %>
+      <%= link_to "Past Runs", "commands" %>
       <%= button_to "Log out", session_path, method: :delete if authenticated? %>
     </nav>
   <div class="text-center">
