@@ -3,7 +3,7 @@ class CommandConfigsController < ApplicationController
 
   # GET /command_configs or /command_configs.json
   def index
-    @command_configs = CommandConfig.all
+    @command_configs = CommandConfig.all.order(priority: :asc)
   end
 
   # GET /command_configs/1 or /command_configs/1.json

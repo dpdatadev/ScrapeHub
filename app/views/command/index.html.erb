@@ -3,27 +3,31 @@
 <h4><i>Last Run: <strong style="color:green;"><%= @lastrun.created_at.strftime("%F") %></strong></i></h4>
 </div>
 
-<div id="commands" class="text-center">
-  <% @commands.each do |command| %>
-
-<table class="table">
-  <thead class="text-center">
-    <tr class="text-center">
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Status</th>
-     
-    </tr>
-  </thead>
-  <tbody class="text-center">
-    <tr>
-      <th scope="row" class="text-center"><a href="/commands/<%= command.id %>"><%= command.id %></th>
-     
-      <td scope="row" class="text-center"> <%= command.name %></td>
-      <td scope="row" class="text-center"><%= command.status %></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-<% end %>
+<div class="d-flex aligns-items-center justify-content-center card text-center w-75 mx-auto">
+   <% @commands.each do |command| %>
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="true" href="#"><%= command.status %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/commands/<%= command.id %>"><%= command.uuid %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Finished: <b><i><%= command.finished_at %></i></b></a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%=command.name%></h5>
+      <p class="card-text">Exit Code: <%=command.exit_code%></p>
+      <a href="#" class="btn btn-primary">RE-RUN</a>
+       <a href="/commands/<%= command.id %>" class="btn btn-primary">STDOUT</a>
+    </div>
+    <% end %>
+  </div>
+  <br />
+  <div class="text-center">
+      <%= link_to "Register New Command", new_command_config_path %>
+  </div>
 

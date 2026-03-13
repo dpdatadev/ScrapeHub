@@ -1,12 +1,72 @@
 <h2 class="text-center"><small>Previously run commands</small></h2>
 <hr />
+<!--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>-->
+<!--<script>
+  tinymce.init({
+    selector: '.tinymce',
+    height: 500,
+    menubar: false,
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+      toolbar: 'undo redo | formatselect | ' +
+      ' bold italic backcolor | alignleft aligncenter ' +
+      ' alignright alignjustify | bullist numlist outdent indent | ' +
+      ' removeformat | help'
+  });
+</script>-->
+
 <div id="commands" class="text-center">
     <div>
         <%= @command.uuid %><br />
         <%= @command.name %>---<%= @command.status %>
-        <hr />
-        <%= @command.stdout %>
+          <hr />
+          <form id="searchForm">
+                <input type="search" id="mySearch" placeholder="Search STDOUT..." />
+                <button type="submit">Search</button>
+        </form><br />
+<div id="resultsContainer"></div>
+        <%= text_area_tag :content, @command.stdout, :id => "stdout", :class => "text-center", rows: 25, cols: 50%> <!-- class=>"tiny-mce"-->
 
       </a>
     </div>
 </div>
+<script type="text/javascript">
+  /*const items = [
+    "Apple",
+    "Banana",
+    "Cherry",
+    "Date",
+    "Fig",
+    "Grape",
+    "Honeydew"
+];*/
+
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    const searchTerm = document.getElementById('mySearch').value.toLowerCase();
+    const stdoutText = document.getElementById('stdout').value.toLowerCase();
+    const resultsContainer = document.getElementById('resultsContainer');
+    resultsContainer.innerHTML = ''; // Clear previous results
+
+    const stdoutItems = stdoutText.split(" "); // Splits the text by commas
+
+
+    const filteredItems = stdoutItems.filter(item => 
+        item.toLowerCase().includes(searchTerm)
+    );
+
+    if (filteredItems.length > 0) {
+        filteredItems.forEach(item => {
+            const div = document.createElement('div');
+            div.textContent = item;
+            resultsContainer.appendChild(div);
+        });
+    } else {
+        resultsContainer.textContent = 'No results found';
+    }
+});
+
+</script>

@@ -1,6 +1,6 @@
 class CommandController < ApplicationController
   def index
-    @commands = getallcommands
+    @commands = getrecent
     @lastrun = getlastrun
   end
 
@@ -9,6 +9,10 @@ class CommandController < ApplicationController
   end
 
   private
+  def getrecent
+    Commands.all.order(finished_at: :desc).limit(10)
+  end
+
   def getallcommands
     Commands.all
   end
