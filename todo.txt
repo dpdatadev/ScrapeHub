@@ -1,0 +1,3 @@
+## 3-14-2026
+## ADD ACTIVEJOB/REDIS/SIDEKIQ some kind of job scheduling (whatever gem?) to schedule jobs
+## Improve formatting/layout
