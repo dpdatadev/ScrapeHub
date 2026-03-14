@@ -34,16 +34,6 @@
     </div>
 </div>
 <script type="text/javascript">
-  /*const items = [
-    "Apple",
-    "Banana",
-    "Cherry",
-    "Date",
-    "Fig",
-    "Grape",
-    "Honeydew"
-];*/
-
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
     const searchTerm = document.getElementById('mySearch').value.toLowerCase();
@@ -68,5 +58,4 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
         resultsContainer.textContent = 'No results found';
     }
 });
-
 </script>

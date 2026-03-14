@@ -8,9 +8,17 @@ class CommandController < ApplicationController
     @command = findone(:id)
   end
 
+  def lineage
+    @lineage = getlineage
+  end
+
   private
+  def getlineage
+    Commands.all.where(status: "LINEAGE").order(finished_at: :desc)
+  end
+  
   def getrecent
-    Commands.all.order(finished_at: :desc).limit(10)
+    Commands.all.order(finished_at: :desc).limit(25)
   end
 
   def getallcommands
